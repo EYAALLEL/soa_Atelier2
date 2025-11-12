@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+  <app-update-departement [departement]="updatedDep" (departementUpdated)="departementUpdated($event)" [ajout]="ajout">
+
+  </app-update-departement>
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+        <tr> <th>Id</th><th>Nom departement</th> <th>Description</th> </tr>
+        </thead>
+        @for(dep of departements; track dep.idDep)
+        {
+          <tbody >
+          <tr>
+            <td>{{dep.idDep}}</td>
+            <td>{{dep.nomDep}}</td>
+            <td>{{dep.descriptionDep}}</td>
+            <td><a class="btn btn-success" (click)="updateDep(dep)">Editer</a></td>
+          </tr>
+          </tbody>
+        }
+      </table>
+    </div>
+  </div>
+</div>

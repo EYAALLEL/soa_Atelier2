@@ -1,0 +1,58 @@
+<div class="container mt-4">
+  <div class="container">
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+      <label>Departement </label>
+      <select class="form-control form-control-lg" id="idDep" name="idDep"
+              [(ngModel)]="IdDepartement" (change)="onChange()">
+        @for(dep of departements;track dep.idDep)
+        {
+          <option value="{{dep.idDep}}"> {{dep.nomDep}} </option>
+        }
+      </select>
+    </div>
+
+
+
+    <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-bordered table-hover align-middle">
+        @if(enseignants?.length!=0){
+          <thead class="table-light">
+          <tr>
+            <th class="px-4">N°</th>
+            <th class="px-4">Id</th>
+            <th class="px-4">Nom</th>
+            <th class="px-4">Salaire</th>
+            <th class="px-4">Date de recrutement</th>
+            <th class="px-4">Departement</th>
+          </tr>
+          </thead>
+        }
+        <tbody>
+          @for (enseignant of enseignants; track enseignant.idEnseignant;let index=$index;let nbr=$count;let first=$first;let last=$last) {
+
+            <tr>
+              <td class="px-4">{{index+1}}</td>
+              <td class="px-4">{{ enseignant.idEnseignant }}</td>
+              <td class="px-4">{{ enseignant.nomComplet }}</td>
+              <td class="px-4">{{ enseignant.salaire }}</td>
+              <td class="px-4">{{ enseignant.dateRecrutement | date:'dd/MM/yyyy' }}</td>
+              <td>{{enseignant.departement?.nomDep}}</td>
+             <!-- <td><a class="btn btn-danger" (click)="supprimerEnseignant(enseignant)">Supprimer</a></td>
+              <td><a class="btn btn-success" [routerLink]="['/updateEnseignant',enseignant.idEnseignant]">Modifier</a></td>-->
+
+            </tr>
+
+
+          }
+
+
+
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+</div>

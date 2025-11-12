@@ -1,0 +1,67 @@
+<div class="container mt-4">
+  <!--<form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2 mt-2 ">
+      <label>Nom Enseignant</label>
+      <input type="text" class="form-control" [(ngModel)]="nomEnseignant" name="nomEnseignant"
+             class="form-control">
+      <button type="submit" (click)="rechercherEns()" class="btn btn-primary mb-2 ml-2">Rechercher</button>
+
+    </div>
+  </form>-->
+
+ <!-- <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2 mt-2 ">
+      <label>Nom de l'enseignant en tapant</label>
+      <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+    </div>
+  </form>-->
+  <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2 mt-2 ">
+      <label>Nom de l'enseignant en tapant</label>
+      <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" >
+    </div>
+  </form>
+
+
+
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-light">
+            <tr>
+              <th class="px-4">N°</th>
+              <th class="px-4">Id</th>
+              <th class="px-4">Nom</th>
+              <th class="px-4">Salaire</th>
+              <th class="px-4">Date de recrutement</th>
+              <th class="px-4">Departement</th>
+            </tr>
+            </thead>
+
+          <tbody>
+            @for (enseignant of enseignants |searchFilter: searchTerm; track enseignant.idEnseignant;let index=$index;let nbr=$count;let first=$first;let last=$last) {
+
+              <tr>
+                <td class="px-4">{{index+1}}</td>
+                <td class="px-4">{{ enseignant.idEnseignant }}</td>
+                <td class="px-4">{{ enseignant.nomComplet }}</td>
+                <td class="px-4">{{ enseignant.salaire }}</td>
+                <td class="px-4">{{ enseignant.dateRecrutement | date:'dd/MM/yyyy' }}</td>
+                <td>{{enseignant.departement?.nomDep}}</td>
+                <!-- <td><a class="btn btn-danger" (click)="supprimerEnseignant(enseignant)">Supprimer</a></td>
+                 <td><a class="btn btn-success" [routerLink]="['/updateEnseignant',enseignant.idEnseignant]">Modifier</a></td>-->
+
+              </tr>
+
+
+            }
+
+
+
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+
